@@ -21,6 +21,7 @@ export interface ResponseSignUpProps {
 }
 
 export interface Data {
+  token(arg0: string, token: any): unknown;
   id: string;
   name: string;
   email: string;

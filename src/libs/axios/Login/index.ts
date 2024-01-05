@@ -2,7 +2,7 @@ export default async function postLogIn(
   params: string
 ): Promise<ResponseLogInProps> {
   const res = await fetch("https://mock-api.arikmpt.com/api/user/login", {
-    body: params,
+    body: JSON.stringify(params),
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
