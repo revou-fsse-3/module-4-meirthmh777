@@ -6,6 +6,8 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 // import Button, { ButtonTypes } from "../Button";
+// import Button from "@common/Button";
+import { Link } from "react-router-dom";
 
 export interface Datum {
   id: string;
@@ -33,6 +35,10 @@ const columns = [
     cell: (props) => <span>{new Date(props.getValue()).toDateString()}</span>,
     header: "Update",
   }),
+  columnHelper.accessor("id", {
+    header: "action",
+    cell: (props) => <Link to={props.getValue()}>edit</Link>,
+  }),
 ];
 
 interface indexProps extends HTMLAttributes<HTMLDivElement> {
@@ -55,7 +61,7 @@ const index: indexComponents = ({ data, ...resProps }) => {
       {...resProps}
       className={
         `${resProps.className ? resProps.className : ""}` +
-        " w-full min-w-[20rem] overflow-x-auto rounded-lg  "
+        " w-full min-w-[30rem] overflow-x-auto rounded-lg  "
       }
     >
       <table className="w-full text-left rounded-lg">
@@ -77,22 +83,23 @@ const index: indexComponents = ({ data, ...resProps }) => {
           ))}
         </thead>
         <tbody>
-          {table.getRowModel().rows.length &&
-            table.getRowModel().rows.map((row, id) => (
-              <tr
-                className={
-                  `${id % 2 === 0 ? "bg-white" : "bg-blue-100"}` +
-                  " table-small px-2 py-2"
-                }
-                key={row.index}
-              >
-                {row.getVisibleCells().map((cel) => (
-                  <td key={cel.id}>
-                    {flexRender(cel.column.columnDef.cell, cel.getContext())}
-                  </td>
-                ))}
-              </tr>
-            ))}
+          {table.getRowModel().rows.length
+            ? table.getRowModel().rows.map((row, id) => (
+                <tr
+                  className={
+                    `${id % 2 === 0 ? "bg-white" : "bg-blue-100"}` +
+                    " table-small px-2 py-2"
+                  }
+                  key={row.index}
+                >
+                  {row.getVisibleCells().map((cel) => (
+                    <td key={cel.id}>
+                      {flexRender(cel.column.columnDef.cell, cel.getContext())}
+                    </td>
+                  ))}
+                </tr>
+              ))
+            : null}
         </tbody>
       </table>
     </div>

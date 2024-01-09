@@ -9,6 +9,7 @@ import {
 import AxiosGetCategory, { Datum } from "../../libs/axios/CategoryList";
 import type NavigationLoader from "../../libs/Rout";
 import Table from "../../common/Table";
+import { Link } from "react-router-dom";
 
 export const loader: NavigationLoader<Object> = async () => {
   let getTokne = localStorage.getItem("token");
@@ -22,7 +23,7 @@ interface indexProps extends HTMLAttributes<HTMLDivElement> {}
 type indexComponents = FC<indexProps> & PropsWithChildren;
 const index: indexComponents = ({ children, ...resProps }) => {
   const [data, setData] = useState<Datum[]>([]);
-  console.log(data);
+  // console.log(data);
   async function getList() {
     const res = await AxiosGetCategory();
     setData(res.data);
@@ -35,6 +36,7 @@ const index: indexComponents = ({ children, ...resProps }) => {
       {...resProps}
       className={`${resProps.className ? resProps.className : ""}`}
     >
+      <Link to={"create"}>add new category</Link>
       <Table data={data} />
       {/* {data.map((d, id) => (
         <Fragment key={id}>

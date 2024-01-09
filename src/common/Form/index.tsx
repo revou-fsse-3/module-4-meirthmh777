@@ -35,7 +35,7 @@ const FormicForm: FormComponent = ({
 };
 
 export default FormicForm;
-type InitialValue = Record<string, string>;
+type InitialValue = Record<string, string | boolean | number>;
 export interface ISubmitHandler {
   (value: InitialValue, action: FormikHelpers<InitialValue>): void;
 }

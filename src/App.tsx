@@ -12,6 +12,8 @@ import {
 import "./App.css";
 import { Fragment } from "react";
 import CategoryList, { loader as CategoryLoader } from "./pages/Category";
+import CreateCategory from "@pages/Create";
+import EditCategory from "@pages/Edit";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -21,6 +23,8 @@ const router = createBrowserRouter(
       <Route index element={<Home />}></Route>
       <Route loader={CategoryLoader} path="/category">
         <Route index element={<CategoryList />} />
+        <Route path="create" element={<CreateCategory />} />
+        <Route path=":id" element={<EditCategory />} />
       </Route>
     </Route>
   )
