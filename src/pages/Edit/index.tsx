@@ -10,10 +10,10 @@ import GetCategory, { Data } from "@axios/GetCategory";
 import FormicForm, { ISubmitHandler } from "@common/Form";
 import Input from "@common/Input";
 import FieldSet from "@common/Fieldset";
-import Button from "@common/Button";
+import Button, { ButtonTypes } from "@common/Button";
 import * as Yup from "yup";
 import axiosUpdateCategory from "@axios/UpdateCategory";
-import { Console } from "console";
+// import { Console } from "console";
 import MySelect from "@common/SelectOption";
 import DeleteCategory from "@axios/DeleteCategory";
 
@@ -66,8 +66,19 @@ const index: indexComponents = ({ children, ...resProps }) => {
               label="is_active"
               options={["active", "not active"]}
             ></MySelect>
-            <Button type="submit">Update</Button>
-            <Button onClick={handleDelete} type="button">
+            <Button
+              type="submit"
+              ButtonType={ButtonTypes.FiveButton}
+              className="p-2 font-bold"
+            >
+              Update
+            </Button>
+            <Button
+              onClick={handleDelete}
+              type="button"
+              ButtonType={ButtonTypes.FiveButton}
+              className="p-2 font-bold"
+            >
               Delete
             </Button>
           </FieldSet>

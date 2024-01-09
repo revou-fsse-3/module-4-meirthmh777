@@ -23,7 +23,13 @@ const Index: IndexComponents = ({ children, ...resProps }) => {
       >
         <Fieldset legend="Create">
           <Input label="name"></Input>
-          <Button type="submit">Submit</Button>
+          <Button
+            type="submit"
+            ButtonType={ButtonTypes.FiveButton}
+            className="p-2 font-bold"
+          >
+            Submit
+          </Button>
         </Fieldset>
       </FormicForm>
     </div>

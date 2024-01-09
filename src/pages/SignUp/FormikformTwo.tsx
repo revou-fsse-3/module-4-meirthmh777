@@ -45,7 +45,6 @@ const FormikformTwo: FormikformTwoComponents = ({ children, ...resProps }) => {
           >
             <p className="text-2xl font-bold">Submit</p>
           </Button>
-          /
         </FielsSet>
       </Form>
     </div>
@@ -54,7 +53,7 @@ const FormikformTwo: FormikformTwoComponents = ({ children, ...resProps }) => {
 export default FormikformTwo;
 
 const handlerSignIn: ISubmitHandler = async (values, action) => {
-  const [_name, email, password] = Object.values(values);
+  const [_name, email, password] = Object.values(values) as string[];
   const data = JSON.stringify(values);
   const respond = await AxiosSignUp(data);
   // console.log(respond);

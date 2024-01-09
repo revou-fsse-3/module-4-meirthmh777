@@ -37,7 +37,11 @@ const columns = [
   }),
   columnHelper.accessor("id", {
     header: "action",
-    cell: (props) => <Link to={props.getValue()}>edit</Link>,
+    cell: (props) => (
+      <Link to={props.getValue()} className="bg-slate-500 p-1 text-white">
+        edit
+      </Link>
+    ),
   }),
 ];
 
@@ -64,7 +68,7 @@ const index: indexComponents = ({ data, ...resProps }) => {
         " w-full min-w-[30rem] overflow-x-auto rounded-lg  "
       }
     >
-      <table className="w-full text-left rounded-lg">
+      <table className="w-full text-left rounded-lg p-2 my-5">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr

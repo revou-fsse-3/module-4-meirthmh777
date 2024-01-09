@@ -19,7 +19,7 @@ const index: indexComponents = ({ children, ...resProps }) => {
           <NavLink to="/" label="Home" />
           <NavLink to="/sign-up" label="Sign Up" />
           <NavLink to="/log-in" label="Log In" />
-          <NavLink to="/category" label="category" />
+          <NavLink to="/category" label="Category" />
         </ul>
       </nav>
       <main className="px-4 py-16">

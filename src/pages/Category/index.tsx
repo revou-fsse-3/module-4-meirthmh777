@@ -26,7 +26,7 @@ const index: indexComponents = ({ children, ...resProps }) => {
   // console.log(data);
   async function getList() {
     const res = await AxiosGetCategory();
-    setData(res.data);
+    setData(res.data.filter((d) => d.id.trim()));
   }
   useEffect(() => {
     getList();
@@ -36,7 +36,12 @@ const index: indexComponents = ({ children, ...resProps }) => {
       {...resProps}
       className={`${resProps.className ? resProps.className : ""}`}
     >
-      <Link to={"create"}>add new category</Link>
+      <Link
+        to={"create"}
+        className="bg-slate-600 p-2 m-2 rounded-lg text-white"
+      >
+        Add new category
+      </Link>
       <Table data={data} />
       {/* {data.map((d, id) => (
         <Fragment key={id}>
